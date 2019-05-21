@@ -1,6 +1,6 @@
 <?php
 require_once ("class.php");
-class  Product  extends  Bank
+class  Product  extends  DAO
 {
     private $pname;
     private $pprice;

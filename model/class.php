@@ -18,30 +18,32 @@ protected  $mysqli ;
 }
     }
     public  function  getProduct () {
+        $array = null;
     $result  =  $this -> mysqli -> query (" SELECT  *  FROM products ");
         while ( $row  =  $result -> fetch_array (MYSQLI_ASSOC)) {
-        $array [] =  $row ;
+            $array [] =  $row ;
         }
-        return  $array ;
+        return $array;
     }
     public  function  deleteProduct ($id ) {
-    if ( $this -> mysqli -> query ("DELETE  FROM  `products`  WHERE  pid  =  '" . $id . "'; ") ==  TRUE ) {
-        return  true ;
-    } else {
-        return  false ;
-    }
+        if ( $this -> mysqli -> query ("DELETE  FROM  `products`  WHERE  pid  =  '" . $id . "'; ") ==  TRUE ) {
+            return  true ;
+        } else {
+            return  false ;
+        }
     }
     public  function  searchProduct ( $id ) {
-    $result  =  $this -> mysqli -> query ( " SELECT  *  FROM books WHERE pname = ' $id ' " );
-        return  $ result -> fetch_array ( MYSQLI_ASSOC );
+        $result  =  $this -> mysqli -> query ( " SELECT  *  FROM books WHERE pname = ' $id ' " );
+        return  $result -> fetch_array ( MYSQLI_ASSOC );
     }
     public  function  updateProduct ( $name , $price , $quantity , $desc , $image , $id ) {
-    $stmt  =  $this -> mysqli -> prepare ( " UPDATE  `products`  SET  `pname`  = ,? `pprice` = ,? `pquan` = ,? ` pimage` = ,?  WHERE  `pid`  = ? " );
-        $stmt -> bind_param ( "siisss" , $name , $price , $quantity , $desc , $image , $id );
-        if ( $stmt -> execute () == TRUE ) {
-        return  true ;
-    } else {
-        return  false ;
-    }
+        $stmt  =  $this -> mysqli -> prepare ( " UPDATE  `products`  SET  `pname`  = ,? `pprice` = ,? `pquan` = ,? ` pimage` = ,?  WHERE  `pid`  = ? " );
+            $stmt -> bind_param ( "siisss" , $name , $price , $quantity , $desc , $image , $id );
+            if ( $stmt -> execute () == TRUE ) {
+            return  true ;
+            }
+            else {
+            return  false ;
+        }
     }
 }
