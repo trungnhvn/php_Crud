@@ -1,5 +1,5 @@
 <?php
-require_once ("class.php");
+require_once("DAO.php");
 class  Product  extends  DAO
 {
     private $pname;
@@ -116,7 +116,7 @@ class  Product  extends  DAO
         $this->pid = $pid;
         return $this;
     }
-    public  function  include () {
+    public  function  include() {
         return  $this -> insertProduct ( $this -> getPname(), $this -> getPprice(), $this -> getPquan(), $this -> getPdesc(), $this -> getPimage());
     }
 
